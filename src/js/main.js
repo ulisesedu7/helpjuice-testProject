@@ -2,7 +2,7 @@
   All my imports
 */
 import AddNewElement from './modules/add-new-h1.js';
-// import TransformElement from './modules/transfor-element.js';
+import TransformElement from './modules/transform-element.js';
 import '../assets/styles/style.scss';
 
 // Declare main consts
@@ -17,5 +17,13 @@ mainApp.addEventListener('keypress', (e) => {
   if (e.key === '/') {
     console.log(e.target);
     AddNewElement.displayOptions(e.target.parentElement);
+  }
+
+  if (e.key === 'Enter' && e.target.classList.contains('transformed-h1')) {
+    // Add new H1 to the page
+    TransformElement.addTransformedElement(e.target.parentElement, e.target);
+
+    // Add new input to continue adding elements
+    AddNewElement.createInput(mainApp);
   }
 });
