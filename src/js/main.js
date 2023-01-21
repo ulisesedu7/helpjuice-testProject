@@ -1,23 +1,20 @@
+/*
+  All my imports
+*/
+import AddNewElement from './modules/add-new-h1.js';
 import '../assets/styles/style.scss';
-import javascriptLogo from '../assets/images/logos/javascript.svg';
-import setupCounter from './modules/counter.js';
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`;
+// Declare main consts
+const mainApp = document.getElementById('app');
 
-setupCounter(document.querySelector('#counter'));
+// Add the new input as soon as app starts
+AddNewElement.createInput(mainApp);
+
+// Event listener at the app for the new input
+mainApp.addEventListener('keypress', (e) => {
+  // Display menu when the '/' key is pressed
+  if (e.key === '/') {
+    console.log(e.target);
+    AddNewElement.displayOptions(e.target.parentElement);
+  }
+});
