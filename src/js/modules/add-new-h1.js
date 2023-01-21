@@ -1,3 +1,6 @@
+// Imports
+import TransformElement from './transform-element.js';
+
 class AddNewElement {
   static createInput(container) {
     const newInput = document.createElement('input');
@@ -40,8 +43,12 @@ class AddNewElement {
 
     element.appendChild(optionsMenu);
 
-    element.addEventListener('click', (e) => {
-      console.log(e.target);
+    element.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        console.log(e.target);
+        TransformElement.transformInput(e.target);
+        optionsMenu.remove();
+      }
     });
   }
 }
