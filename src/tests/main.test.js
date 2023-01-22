@@ -1,4 +1,5 @@
 // @vitest-environment jsdom
+/* eslint-disable import/no-unresolved */
 import { describe, expect, it } from 'vitest';
 import AddNewElement from '../js/modules/add-new-h1.js';
 import TransformElement from '../js/modules/transform-element.js';
