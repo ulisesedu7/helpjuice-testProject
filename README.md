@@ -1,1 +1,1 @@
-# vite-template-test
+# Helpjuice Test Project

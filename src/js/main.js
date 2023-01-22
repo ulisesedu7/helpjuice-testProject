@@ -12,18 +12,28 @@ const mainApp = document.getElementById('app');
 AddNewElement.createInput(mainApp);
 
 // Event listener at the app for the new input
-mainApp.addEventListener('keypress', (e) => {
+mainApp.addEventListener('keydown', (e) => {
   // Display menu when the '/' key is pressed
-  if (e.key === '/') {
-    console.log(e.target);
+  if (e.key === '/' && !e.target.classList.contains('transformed-h1')) {
     AddNewElement.displayOptions(e.target.parentElement);
+    AddNewElement.transformElement(e.target);
   }
 
-  if (e.key === 'Enter' && e.target.classList.contains('transformed-h1')) {
+  if (e.key === 'Enter' && e.target.classList.contains('transformed-h1') && e.target.value !== '') {
     // Add new H1 to the page
     TransformElement.addTransformedElement(e.target.parentElement, e.target);
 
     // Add new input to continue adding elements
     AddNewElement.createInput(mainApp);
+  }
+
+  // Add Regular text
+  if (e.key === 'Enter' && e.target.value !== '' && e.target.value !== '/1') {
+    if (!e.target.classList.contains('transformed-h1')) {
+      TransformElement.addRegularText(e.target.parentElement, e.target);
+
+      // Add new input to continue adding elements
+      AddNewElement.createInput(mainApp);
+    }
   }
 });

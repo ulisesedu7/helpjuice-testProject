@@ -27,27 +27,24 @@ class AddNewElement {
         <i class="fa-solid fa-heading fa-2x"></i>
         <p>
           Heading 1
-          <span>Shortcut: type # + space</span>
-        </p>
-      </div>
-
-      <div class="dropdown__filters__eh1" id="h1-filter">
-        <i class="fa-solid fa-text"></i>
-        <p>
-          Heading 1
-          <span>Shortcut: type # + space</span>
+          <span>Shortcut: type 1 + Enter</span>
         </p>
       </div>
     </div>
     `;
 
     element.appendChild(optionsMenu);
+  }
 
-    element.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        console.log(e.target);
+  static transformElement(element) {
+    element.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && e.target.value === '/1') {
         TransformElement.transformInput(e.target);
-        optionsMenu.remove();
+        e.target.nextElementSibling.remove();
+      }
+
+      if (e.key === 'Backspace' && e.target.value === '/') {
+        e.target.nextElementSibling.remove();
       }
     });
   }

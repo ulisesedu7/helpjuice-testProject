@@ -1,8 +1,8 @@
 class TransformElement {
   static transformInput(element) {
-    element.value = '';
     element.placeholder = 'Heading 1';
     element.classList.add('transformed-h1');
+    element.value = '';
   }
 
   static addTransformedElement(container, element) {
@@ -13,6 +13,18 @@ class TransformElement {
 
     // Add new H1
     container.appendChild(newH1);
+
+    // Remove previous input
+    element.remove();
+  }
+
+  static addRegularText(container, element) {
+    const regularText = document.createElement('p');
+    regularText.classList.add('new-text');
+    regularText.innerText = element.value;
+
+    // Add regular text
+    container.appendChild(regularText);
 
     // Remove previous input
     element.remove();
